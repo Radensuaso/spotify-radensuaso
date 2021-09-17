@@ -1,13 +1,14 @@
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
-import SingleSongCard from "./SingleSongCard"
-import Loading from "./Loading"
-import AlertSpotify from "./AlertSpotify"
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import SingleSongCard from './SingleSongCard';
+import Loading from './Loading';
+import AlertSpotify from './AlertSpotify';
 
 const SongRow = (props) => (
   <>
     <h2 className="row-title">
-      {props.title} {props.songs.loading && <Loading />}
+      {props.title}
+      {/* {props.songs.loading && <Loading />} */}
     </h2>
     <Row className="trending-artist-row mb-4">
       {props.songs.error ? (
@@ -21,6 +22,6 @@ const SongRow = (props) => (
       )}
     </Row>
   </>
-)
+);
 
-export default SongRow
+export default SongRow;
