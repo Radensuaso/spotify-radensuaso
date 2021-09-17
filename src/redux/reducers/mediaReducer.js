@@ -31,6 +31,11 @@ const mediaReducer = (state = initialState.media, action) => {
         ...state,
         search: action.payload,
       };
+    case SELECT:
+      return {
+        ...state,
+        selected: action.payload,
+      };
     case LOADING:
       return {
         ...state,

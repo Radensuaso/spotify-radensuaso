@@ -86,3 +86,7 @@ export const fetchSongsAction = (query) => {
     }
   };
 };
+export const selectAction = (song) => ({
+  type: SELECT,
+  payload: song,
+})

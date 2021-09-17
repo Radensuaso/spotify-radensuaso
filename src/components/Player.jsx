@@ -15,32 +15,40 @@ import {
 } from "react-icons/fa"
 import { BsSpeaker } from "react-icons/bs"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
 
-const Player = (props) => {
+const mapStateToProps = (state) => ({
+  playerSong: state.media.selected,
+})
+
+
+
+
+const Player = ({ playerSong }) => {
   return (
     <footer className="d-flex p-3">
       {/* Song currently playing section */}
       <div className="song-playing-footer d-flex">
         <img
           className="pr-3 img-fluid"
-          src={props.playerSong.album.cover_big}
-          alt={props.playerSong.album.title + " cover"}
+          src={playerSong.album.cover_big}
+          alt={playerSong.album.title + " cover"}
           style={{ width: "100px" }}
         />
         <div className="pr-3 text-nowrap">
           <Link
             className="text-Light"
-            to={"/album/" + props.playerSong.album.id}
+            to={"/album/" + playerSong.album.id}
           >
-            {props.playerSong.title}{" "}
+            {playerSong.title}{" "}
           </Link>{" "}
           <br />
           <span className="small">
             <Link
               className="text-Light"
-              to={"/artist/" + props.playerSong.artist.id}
+              to={"/artist/" + playerSong.artist.id}
             >
-              {props.playerSong.artist.name}
+              {playerSong.artist.name}
             </Link>
           </span>
         </div>
@@ -133,4 +141,4 @@ const Player = (props) => {
   )
 }
 
-export default withRouter(Player)
+export default connect(mapStateToProps)(withRouter(Player))
