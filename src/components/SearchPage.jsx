@@ -2,23 +2,34 @@ import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import { useState, useEffect } from "react"
-import fetchGet from "../functions/fetchGet"
+import { useEffect } from "react"
 import SongRowEntire from "./SongRowEntire"
+import { connect } from "react-redux"
+import { fetchSongsAction } from "../redux/actions/index"
+import Loading from "./Loading";
+import AlertSpotify from "./AlertSpotify";
 
-const SearchPage = ({ setPlayerSong }) => {
-  const [query, setQuery] = useState("")
-  const [songs, setSongs] = useState({
-    data: [],
-    loading: true,
-    error: false,
-  })
 
-  const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+
+const mapStateToProps = (state) => ({
+  search: state.media.search,
+  error: state.media.error,
+  loading: state.media.loading,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  //functions
+  fetchSongs: (query) => dispatch(fetchSongsAction(query)),
+});
+
+
+
+
+const SearchPage = ({ setPlayerSong, search, error, loading, fetchSongs }) => {
 
   useEffect(() => {
-    fetchGet(url, setSongs, query ? query : "muse")
-  }, [query])
+    fetchSongs("metallica")
+  }, [])
 
   return (
     <Container fluid id="search-container">
@@ -26,8 +37,8 @@ const SearchPage = ({ setPlayerSong }) => {
         <Col xs={12} md={8} lg={4}>
           <Form.Group className="search-field">
             <Form.Control
-              onChange={(e) => setQuery(e.target.value)}
-              value={query}
+              onChange={(e) => fetchSongs(e.target.value)}
+
               size="lg"
               type="text"
               placeholder="Artists, songs, or podcasts"
@@ -35,13 +46,21 @@ const SearchPage = ({ setPlayerSong }) => {
           </Form.Group>
         </Col>
       </Row>
-      <SongRowEntire
-        title={"Searched Songs"}
-        songs={songs}
-        setPlayerSong={setPlayerSong}
-      />
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <AlertSpotify />
+      ) : (
+
+        <SongRowEntire
+          title={"Searched Songs"}
+          songs={search}
+          setPlayerSong={setPlayerSong}
+        />
+
+      )}
     </Container>
   )
 }
 
-export default SearchPage
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPage)
