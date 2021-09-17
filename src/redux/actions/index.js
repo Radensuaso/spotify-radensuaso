@@ -23,7 +23,8 @@ export const fetchSongsAction = (query) => {
         },
       });
       if (response.ok) {
-        const fetchedContent = await response.json();
+        const fetched = await response.json();
+        const fetchedContent = fetched.data;
         switch (query) {
           case 'Rock Music':
             dispatch({

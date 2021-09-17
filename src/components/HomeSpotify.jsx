@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import fetchGet from "../functions/fetchGet";
-import Container from "react-bootstrap/Container";
-import SongRow from "./SongRow";
-import { connect } from "react-redux";
-import { fetchSongsAction } from "../redux/actions";
+import { useState, useEffect } from 'react';
+import fetchGet from '../functions/fetchGet';
+import Container from 'react-bootstrap/Container';
+import SongRow from './SongRow';
+import { connect } from 'react-redux';
+import { fetchSongsAction } from '../redux/actions';
 
 const mapStateToProps = (state) => ({
   rockMusic: state.media.rockMusic,
@@ -27,7 +27,7 @@ const HomeSpotify = ({
   loading,
   fetchSongs,
 }) => {
-  const queries = ["Rock Music", "Chill Out", "Classical"];
+  const queries = ['Rock Music', 'Chill Out', 'Classical'];
 
   useEffect(() => {
     fetchSongs(queries[0]);
@@ -37,7 +37,7 @@ const HomeSpotify = ({
 
   return (
     <Container fluid id="home-spotify">
-      {/* <SongRow
+      <SongRow
         title={queries[0]}
         songs={rockMusic && rockMusic}
         setPlayerSong={setPlayerSong}
@@ -51,7 +51,7 @@ const HomeSpotify = ({
         title={queries[2]}
         songs={classical && classical}
         setPlayerSong={setPlayerSong}
-      /> */}
+      />
     </Container>
   );
 };
