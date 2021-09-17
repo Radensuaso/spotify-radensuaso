@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import fetchGet from "../functions/fetchGet";
+import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import SongRow from "./SongRow";
 import { connect } from "react-redux";
