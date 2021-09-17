@@ -91,3 +91,13 @@ export const selectAction = (song) => ({
   type: SELECT,
   payload: song,
 });
+
+export const addToLibAction = (song) => ({
+  type: ADD_TO_LIBRARY,
+  payload: song,
+});
+
+export const removeFromLibAction = (song) => ({
+  type: REMOVE_FROM_LIBRARY,
+  payload: song,
+});
