@@ -315,6 +315,18 @@ div#artist-header-container div.d-flex p.listeners {
   border-radius: 25px;
 }
 
+/* Library Container */
+#library-container {
+  min-height: 100vh;
+  padding-bottom: 10rem;
+  background: rgb(37 109 88);
+  background: linear-gradient(
+    142deg,
+    rgb(238, 130, 238),
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
 /* Album jumbotron */
 #album-header-container .album .col-12 > img {
   box-shadow: 10px 10px 20px 8px rgb(0 0 0 / 18%);

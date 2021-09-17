@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchSongs: (query) => dispatch(fetchSongsAction(query)),
 });
 
-const SearchPage = ({ setPlayerSong, search, error, loading, fetchSongs }) => {
+const SearchPage = ({ search, error, loading, fetchSongs }) => {
   useEffect(() => {
     fetchSongs("metallica");
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,11 +45,7 @@ const SearchPage = ({ setPlayerSong, search, error, loading, fetchSongs }) => {
       ) : error ? (
         <AlertSpotify />
       ) : (
-        <SongRowEntire
-          title={"Searched Songs"}
-          songs={search}
-          setPlayerSong={setPlayerSong}
-        />
+        <SongRowEntire title={"Searched Songs"} songs={search} />
       )}
     </Container>
   );

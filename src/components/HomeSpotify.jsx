@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const HomeSpotify = ({
-  setPlayerSong,
   rockMusic,
   chillOut,
   classical,
@@ -45,21 +44,9 @@ const HomeSpotify = ({
         <AlertSpotify />
       ) : (
         <>
-          <SongRow
-            title={queries[0]}
-            songs={rockMusic && rockMusic}
-            setPlayerSong={setPlayerSong}
-          />
-          <SongRow
-            title={queries[1]}
-            songs={chillOut && chillOut}
-            setPlayerSong={setPlayerSong}
-          />
-          <SongRow
-            title={queries[2]}
-            songs={classical && classical}
-            setPlayerSong={setPlayerSong}
-          />
+          <SongRow title={queries[0]} songs={rockMusic && rockMusic} />
+          <SongRow title={queries[1]} songs={chillOut && chillOut} />
+          <SongRow title={queries[2]} songs={classical && classical} />
         </>
       )}
     </Container>
