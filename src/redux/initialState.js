@@ -1,6 +1,9 @@
 const initialState = {
   media: {
-    songs: [],
+    rockMusic: [],
+    chillOut: [],
+    classical: [],
+    search: [],
     loading: false,
     error: false,
     selected: null,
