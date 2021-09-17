@@ -1,29 +1,29 @@
-import Container from "react-bootstrap/Container"
-import { useState, useEffect } from "react"
-import fetchGet from "../functions/fetchGet"
-import { usePalette } from "react-palette"
-import AlbumJumbotron from "./AlbumJumbotron"
-import Table from "react-bootstrap/Table"
-import { AiOutlineClockCircle } from "react-icons/ai"
-import { Link } from "react-router-dom"
+import Container from "react-bootstrap/Container";
+import { useState, useEffect } from "react";
+import fetchGet from "../functions/fetchGet";
+import { usePalette } from "react-palette";
+import AlbumJumbotron from "./AlbumJumbotron";
+import Table from "react-bootstrap/Table";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const AlbumPage = (props) => {
   const [album, setAlbum] = useState({
     data: null,
     loading: true,
     error: false,
-  })
+  });
 
   useEffect(() => {
-    const albumUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/"
+    const albumUrl = `${process.env.REACT_APP_BE_URL}/album/`;
 
-    const albumID = props.match.params.albumID
-    fetchGet(albumUrl, setAlbum, albumID)
+    const albumID = props.match.params.albumID;
+    fetchGet(albumUrl, setAlbum, albumID);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [album.loading])
+  }, [album.loading]);
 
   /* get dominant color */
-  const { data } = usePalette(album.data && album.data.cover_big)
+  const { data } = usePalette(album.data && album.data.cover_big);
 
   return (
     <>
@@ -82,7 +82,7 @@ const AlbumPage = (props) => {
         </Table>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default AlbumPage
+export default AlbumPage;

@@ -1,8 +1,8 @@
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import SingleSongCard from './SingleSongCard';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import SingleSongCard from "./SingleSongCard";
 
-import AlertSpotify from './AlertSpotify';
+import AlertSpotify from "./AlertSpotify";
 
 const SongRow = (props) => (
   <>
