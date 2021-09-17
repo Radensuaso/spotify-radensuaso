@@ -1,40 +1,40 @@
-import { useState, useEffect } from "react"
-import fetchGet from "../functions/fetchGet"
-import Container from "react-bootstrap/Container"
-import SongRow from "./SongRow"
+import { useState, useEffect } from "react";
+import fetchGet from "../functions/fetchGet";
+import Container from "react-bootstrap/Container";
+import SongRow from "./SongRow";
 
 const HomeSpotify = ({ setPlayerSong }) => {
-  const queries = ["Rock Music", "Chill Out", "Classical"]
+  const queries = ["Rock Music", "Chill Out", "Classical"];
 
   const [query0, setQuery0] = useState({
     data: [],
     loading: true,
     error: false,
-  })
+  });
   const [query1, setQuery1] = useState({
     data: [],
     loading: true,
     error: false,
-  })
+  });
   const [query2, setQuery2] = useState({
     data: [],
     loading: true,
     error: false,
-  })
+  });
 
-  const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+  const url = process.env.REACT_APP_BE_URL;
 
   useEffect(() => {
-    fetchGet(url, setQuery0, queries[0])
-    console.log(query0)
+    fetchGet(url, setQuery0, queries[0]);
+    console.log(query0);
 
-    fetchGet(url, setQuery1, queries[1])
-    console.log(query1)
+    fetchGet(url, setQuery1, queries[1]);
+    console.log(query1);
 
-    fetchGet(url, setQuery2, queries[2])
-    console.log(query2)
+    fetchGet(url, setQuery2, queries[2]);
+    console.log(query2);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query0.loading, query1.loading, query2.loading])
+  }, [query0.loading, query1.loading, query2.loading]);
 
   return (
     <Container fluid id="home-spotify">
@@ -54,7 +54,7 @@ const HomeSpotify = ({ setPlayerSong }) => {
         setPlayerSong={setPlayerSong}
       />
     </Container>
-  )
-}
+  );
+};
 
-export default HomeSpotify
+export default HomeSpotify;
