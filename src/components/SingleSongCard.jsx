@@ -46,15 +46,20 @@ const SingleSongCard = ({
           {song.artist.name}
         </Link>
       </Card.Text>
-      {libraryList.includes(song) ? (
+      {libraryList.some((l) => l.id === song.id) ? (
         <div
           onClick={() => removeFromLib(song)}
-          className="text-danger text-right"
+          className="text-success text-right"
+          style={{ cursor: "pointer", fontSize: "2rem" }}
         >
           <FaHeart />
         </div>
       ) : (
-        <div className="text-right" onClick={() => addToLib(song)}>
+        <div
+          className="text-right"
+          style={{ cursor: "pointer", fontSize: "2rem" }}
+          onClick={() => addToLib(song)}
+        >
           <FaHeart />
         </div>
       )}
