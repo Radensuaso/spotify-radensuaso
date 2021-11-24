@@ -12,9 +12,10 @@ Hello World! This was a challenge to make some pages of spotify in React, practi
 ## Technologies
 
 - React
+- Redux
 
 ## Launch
 
-Download the repo then with your terminal in the folder do the command NPM Install, then NPM Start to see the website functioning.
+The link to see this project is: https://spotify-redux.vercel.app/
 
 Enjoy!
