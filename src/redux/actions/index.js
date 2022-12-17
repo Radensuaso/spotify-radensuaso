@@ -9,95 +9,95 @@ export const ADD_TO_LIBRARY = "ADD_TO_LIBRARY";
 export const REMOVE_FROM_LIBRARY = "REMOVE_FROM_LIBRARY";
 
 export const fetchSongsAction = (query) => {
-  return async (dispatch, getState) => {
-    try {
-      dispatch({
-        type: LOADING,
-        payload: true,
-      });
+    return async (dispatch, getState) => {
+        try {
+            dispatch({
+                type: LOADING,
+                payload: true,
+            });
 
-      const response = await fetch(
-        `${process.env.REACT_APP_BE_URL}/search?q=${query}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNjA5ZmIzNTgxNzAwMTVjMjI3MGMiLCJpYXQiOjE2MjY0Mzk4MTksImV4cCI6MTYyNzY0OTQxOX0.r_G81mw3I9g934aGyIO8AZbfkWxO_W7hS9Tlz9lYZNY",
-          },
+            const response = await fetch(
+                `${process.env.REACT_APP_BE_URL}/search?q=${query}`,
+                {
+                    headers: {
+                        Authorization:
+                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNjA5ZmIzNTgxNzAwMTVjMjI3MGMiLCJpYXQiOjE2MjY0Mzk4MTksImV4cCI6MTYyNzY0OTQxOX0.r_G81mw3I9g934aGyIO8AZbfkWxO_W7hS9Tlz9lYZNY",
+                    },
+                }
+            );
+            if (response.ok) {
+                const fetched = await response.json();
+                const fetchedContent = fetched.data;
+                switch (query) {
+                    case "Rock Music":
+                        dispatch({
+                            type: FILL_ROCK,
+                            payload: fetchedContent,
+                        });
+                        break;
+                    case "Classical":
+                        dispatch({
+                            type: FILL_CLASSICAL,
+                            payload: fetchedContent,
+                        });
+                        break;
+                    case "Chill Out":
+                        dispatch({
+                            type: FILL_CHILLOUT,
+                            payload: fetchedContent,
+                        });
+                        break;
+
+                    default:
+                        dispatch({
+                            type: FILL_SEARCH,
+                            payload: fetchedContent,
+                        });
+                        break;
+                }
+
+                dispatch({
+                    type: ERROR,
+                    payload: false,
+                });
+                dispatch({
+                    type: LOADING,
+                    payload: false,
+                });
+            } else {
+                dispatch({
+                    type: ERROR,
+                    payload: true,
+                });
+                dispatch({
+                    type: LOADING,
+                    payload: false,
+                });
+            }
+        } catch (error) {
+            dispatch({
+                type: ERROR,
+                payload: true,
+            });
+            dispatch({
+                type: LOADING,
+                payload: false,
+            });
         }
-      );
-      if (response.ok) {
-        const fetched = await response.json();
-        const fetchedContent = fetched.data;
-        switch (query) {
-          case "Rock Music":
-            dispatch({
-              type: FILL_ROCK,
-              payload: fetchedContent,
-            });
-            break;
-          case "Classical":
-            dispatch({
-              type: FILL_CLASSICAL,
-              payload: fetchedContent,
-            });
-            break;
-          case "Chill Out":
-            dispatch({
-              type: FILL_CHILLOUT,
-              payload: fetchedContent,
-            });
-            break;
-
-          default:
-            dispatch({
-              type: FILL_SEARCH,
-              payload: fetchedContent,
-            });
-            break;
-        }
-
-        dispatch({
-          type: ERROR,
-          payload: false,
-        });
-        dispatch({
-          type: LOADING,
-          payload: false,
-        });
-      } else {
-        dispatch({
-          type: ERROR,
-          payload: true,
-        });
-        dispatch({
-          type: LOADING,
-          payload: false,
-        });
-      }
-    } catch (error) {
-      dispatch({
-        type: ERROR,
-        payload: true,
-      });
-      dispatch({
-        type: LOADING,
-        payload: false,
-      });
-    }
-  };
+    };
 };
 
 export const selectAction = (song) => ({
-  type: SELECT,
-  payload: song,
+    type: SELECT,
+    payload: song,
 });
 
 export const addToLibAction = (song) => ({
-  type: ADD_TO_LIBRARY,
-  payload: song,
+    type: ADD_TO_LIBRARY,
+    payload: song,
 });
 
 export const removeFromLibAction = (song) => ({
-  type: REMOVE_FROM_LIBRARY,
-  payload: song,
+    type: REMOVE_FROM_LIBRARY,
+    payload: song,
 });

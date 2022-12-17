@@ -5,11 +5,11 @@ import persistingReducer from "../reducers";
 import { persistStore } from "redux-persist";
 
 export const configureStore = createStore(
-  persistingReducer,
-  initialState,
-  process.env.REACT_APP_DEVELOPMENT
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk))
-    : compose(applyMiddleware(thunk))
+    persistingReducer,
+    initialState,
+    process.env.REACT_APP_DEVELOPMENT
+        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk))
+        : compose(applyMiddleware(thunk))
 );
 
-export const persistor = persistStore(configureStore);
+export const persistor = persistStore(configureStore); 

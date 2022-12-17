@@ -10,19 +10,19 @@ import SearchPage from "./components/SearchPage";
 import Library from "./components/Library";
 
 const App = () => {
-  return (
-    <Router>
-      <div className="App">
-        <NavSpotify />
-        <Route path="/" exact component={HomeSpotify} />
-        <Route path="/search" component={SearchPage} />
-        <Route path="/library" component={Library} />
-        <Route path="/artist/:artistID" component={ArtistPage} />
-        <Route path="/album/:albumID" component={AlbumPage} />
-        <Player />
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <NavSpotify />
+                <Route path="/" exact component={HomeSpotify} />
+                <Route path="/search" component={SearchPage} />
+                <Route path="/library" component={Library} />
+                <Route path="/artist/:artistID" component={ArtistPage} />
+                <Route path="/album/:albumID" component={AlbumPage} />
+                <Player />
+            </div>
+        </Router>
+    );
 };
 
 export default App;
