@@ -16,4 +16,4 @@ Hello World! This was a challenge to make some pages of spotify in React, practi
 
 ## Launch
 
-The link to see this project is: https://spotify-redux.onrender.com
+The link to see this project is: https://spotify-radensuaso.onrender.com
